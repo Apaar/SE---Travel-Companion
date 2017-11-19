@@ -33,8 +33,61 @@
       }
     }
   </script>
+  <script>
+  
+  function sendLocation() {
+    // Try HTML5 geolocation.
+    var usr = '<?php echo $usr; ?>';
+      if(!(usr == "") )
+      {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            //Update database with current location
+            console.log(pos.lat + " " + pos.lng);
+            locationUpdate(pos.lat, pos.lng);
+            //-------------------------------------
+          }, function() {
+            console.log("location failed")
+          });
+        } 
+        else {
+          console.log("location failed")
+        }
+      }
+      setTimeout(sendLocation,1000*2);
+  }
+
+  function locationUpdate(lat, lng)
+  {
+    var xhr = new XMLHttpRequest();
+    var url = "location_update.php";
+    var usr = '<?php echo $usr; ?>';
+    var params = "username="+usr+"&lat="+lat+"&lng="+lng;
+    xhr.open("POST",url,true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+          var response = this.responseText;
+          console.log(response);
+        }
+      }
+
+  
+    xhr.send(params);
+
+  }
+
+  
+</script>
 </head>
-<body>
+<body onload = "sendLocation()">
 <!-- NAVBAR -->
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
