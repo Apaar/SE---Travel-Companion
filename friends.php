@@ -2,6 +2,10 @@
 	include_once('template.php');
 ?>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<script type="text/javascript">
 		function getFrnds()
 		{
@@ -23,9 +27,27 @@
 
 				xhr.onreadystatechange = function() {
 					if(this.readyState == 4 && this.status == 200) {
-						alert("friends")
-						var response = this.responseText;
-						console.log(response);
+						if(this.responseText){
+							//alert("friends")
+							var response = JSON.parse(this.responseText);
+							var friends_box = document.createElement('ul');
+							friends_box.className = 'list-group'
+							response.forEach(function(friends){
+								var list_element = document.createElement('li');
+								list_element.className = 'list-group-item';
+								list_element.innerHTML = friends['friend2']
+								friends_box.appendChild(list_element)
+							})
+							document.getElementById('friends_body').appendChild(friends_box);
+						}
+						else {
+							var list_element = document.createElement('li');
+							list_element.className = 'list-group-item';
+							list_element.innerHTML = "You have no friends :(";
+							friends_box.appendChild(list_element);
+							document.getElementById('friends_body').appendChild(friends_box);
+							//alert("friends list empty")
+						}
 					}
 				}
 
@@ -34,7 +56,6 @@
 		}
 	</script>
 </head>
-<body onload="getFrnds()">
-
+<body id='friends_body' onload="getFrnds()">
 </body>
 </html>
