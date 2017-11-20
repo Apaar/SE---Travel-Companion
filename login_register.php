@@ -1,7 +1,6 @@
 <?php
 	include_once('template.php');
 ?>
-<head>
 	<title>Login Template</title>
 	<link rel="stylesheet" href="css/entryForm.css">
 
@@ -104,8 +103,6 @@
         }
 
 	</script>
-</head>
-<body>
 <div class="container">
 	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 loginbox">
 		<div class="panel panel-info" >

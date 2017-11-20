@@ -1,9 +1,0 @@
-1) handle friends as the data comes in - Apaar
-2) handle sending location data all the time - Apaar 
-3) location backend(php for it) and then display on map - Bhavik/Apaar
-4) index page css for everything - Amit/Apoorva/Ajith
-5) protect all pages in template.php - Aniket
-6) updating the homepage location markers periodically - Bhavik/Apaar
-7) forgot password page - Anjali
-8) adding making and accepting of friend requests - Aniket
-9) figure out how to and make unit tests - Aakanksha

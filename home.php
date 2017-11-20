@@ -1,10 +1,6 @@
 <?php
 	include_once('template.php');
 ?>
-<head>
-	<title>Travel companion</title>
-</head>
-<body>
 	 <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
