@@ -1,11 +1,15 @@
 <?php
 	include_once('template.php');
 ?>
-	<div id='friends_body'></div>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<div class ="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Friends</h3>
+			</div>
+			<ul class="list-group" id="friends_body"></ul>
+		</div>
+	</div>
+	
 	<script type="text/javascript">
 		window.onload = getFrnds;
 		function getFrnds()
@@ -31,22 +35,23 @@
 						if(this.responseText){
 							//alert("friends")
 							var response = JSON.parse(this.responseText);
-							var friends_box = document.createElement('ul');
-							friends_box.className = 'list-group'
+							
 							response.forEach(function(friends){
-								var list_element = document.createElement('li');
-								list_element.className = 'list-group-item';
-								list_element.innerHTML = friends['friend2']
-								friends_box.appendChild(list_element)
+								var list_element = document.createElement('button');
+								list_element.setAttribute('type','button');
+								list_element.className = 'list-group-item list-group-item-action';
+								list_element.innerHTML = friends['friend2'];
+								list_element.value = friends['friend2'];
+								list_element.setAttribute('onclick','button_clicked(this)')
+								document.getElementById('friends_body').appendChild(list_element);
 							})
-							document.getElementById('friends_body').appendChild(friends_box);
+							
 						}
 						else {
 							var list_element = document.createElement('li');
 							list_element.className = 'list-group-item';
 							list_element.innerHTML = "You have no friends :(";
-							friends_box.appendChild(list_element);
-							document.getElementById('friends_body').appendChild(friends_box);
+							document.getElementById('friends_body').appendChild(list_element);
 							//alert("friends list empty")
 						}
 					}
@@ -54,6 +59,9 @@
 
 				xhr.send(params);
 			}
+		}
+		function button_clicked(name){
+			console.log("button_click "+name.value)
 		}
 	</script>
 </body>

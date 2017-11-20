@@ -101,7 +101,7 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li id="home"><a href="index.php">Home</a></li>
+          <li id="home"><a href="home.php">Home</a></li>
           <li id="Users"><a href="index.php">Users</a></li>
           <li id="friends"><a href="friends.php">Friends</a></li>
         </ul>
