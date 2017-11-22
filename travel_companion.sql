@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 06:35 AM
+-- Generation Time: Nov 22, 2017 at 03:48 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -42,7 +42,8 @@ INSERT INTO `credentials` (`username`, `password`, `first_name`, `last_name`, `e
 ('Aniket', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Aniket', 'Udaykumar', 'aniket.udaykumar@gmail.com'),
 ('xyz', '66b27417d37e024c46526c2f6d358a754fc552f3', 'xyz', 'qwe', 'xyz@xyz.com'),
 ('abc', 'a9993e364706816aba3e25717850c26c9cd0d89d', 'abc', 'rty', 'abc@abc.com'),
-('qwe', '056eafe7cf52220de2df36845b8ed170c67e23e3', 'qwe', 'zxc', 'qwe@qwe.com');
+('qwe', '056eafe7cf52220de2df36845b8ed170c67e23e3', 'qwe', 'zxc', 'qwe@qwe.com'),
+('apaar', 'c5094fbdc366aff26c4337e0ea0f1e1ea67db24e', 'apaar', 'apaar', 'apaar');
 
 -- --------------------------------------------------------
 
@@ -68,6 +69,25 @@ INSERT INTO `friends_list` (`friend1`, `friend2`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `last_seen`
+--
+
+CREATE TABLE `last_seen` (
+  `username` varchar(30) NOT NULL,
+  `last_seen` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `last_seen`
+--
+
+INSERT INTO `last_seen` (`username`, `last_seen`) VALUES
+('xyz', '2017-11-22 20:18:32'),
+('aniket', '2017-11-22 20:09:13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `location`
 --
 
@@ -82,8 +102,9 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`username`, `lat`, `lng`) VALUES
-('aniket', 12.935629, 77.535660),
-('xyz', 12.935629, 77.535660);
+('aniket', 12.964755, 77.639999),
+('xyz', 12.964758, 77.639999),
+('apaar', 12.935593, 77.534042);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

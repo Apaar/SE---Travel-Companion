@@ -21,19 +21,62 @@
       var usr = '<?php echo $usr; ?>';
       if(usr == "" )
       {
-        window.alert("xyz");
         var a = document.getElementById("test");
         a.href = "login_register.php";
       }
       else
       {
-        window.alert(usr);
         var a = document.getElementById("test");
         a.href = "home.php";
       }
     }
-  </script>
-  <script>
+
+    function check2()
+    {
+      var usr = '<?php echo $usr; ?>';
+      if(usr == "" )
+      {
+        var a = document.getElementById("test2");
+        a.href = "login_register.php";
+      }
+      else
+      {
+        var a = document.getElementById("test2");
+        a.href = "home.php";
+      }
+    }
+
+    function check3()
+    {
+      var usr = '<?php echo $usr; ?>';
+      if(usr == "" )
+      {
+        var a = document.getElementById("test3");
+        a.href = "login_register.php";
+      }
+      else
+      {
+        var a = document.getElementById("test3");
+        a.href = "users.php";
+      }
+    }
+
+    function check4()
+    {
+      var usr = '<?php echo $usr; ?>';
+      if(usr == "" )
+      {
+        var a = document.getElementById("test4");
+        a.href = "login_register.php";
+      }
+      else
+      {
+        var a = document.getElementById("test4");
+        a.href = "friends.php";
+      }
+    }
+
+  
   function update_lastseen() {
     var usr = '<?php echo $usr; ?>';
     var xhr = new XMLHttpRequest();
@@ -56,7 +99,7 @@
 
   }
 
-  
+  sendLocation();
   function sendLocation() {
     // Try HTML5 geolocation.
     var usr = '<?php echo $usr; ?>';
@@ -83,7 +126,7 @@
         }
         update_lastseen();
       }
-      setTimeout(sendLocation,1000*2);
+      setTimeout(sendLocation,1000*5);
   }
 
   function locationUpdate(lat, lng)
@@ -121,13 +164,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <p class="navbar-brand">Travel Companion</p>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li id="home"><a href="home.php">Home</a></li>
-          <li id="Users"><a href="index.php">Users</a></li>
-          <li id="friends"><a href="friends.php">Friends</a></li>
+          <li id="index"><a href="index.php">Travel Companion</a></li>
+          <li id="home"><a onclick="check2()" id="test2" href="">Home</a></li>
+          <li id="Users"><a onclick="check3()" id="test3" href="">Users</a></li>
+          <li id="friends"><a onclick="check4()" id="test4" href="">Friends</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a onclick="check()" id="test" href=""><span class="glyphicon glyphicon-user"></span> <?php echo $status?></a></li>

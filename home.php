@@ -42,7 +42,7 @@
             map.setCenter(pos);
 
             //Update database with current location
-            window.alert(pos.lat + " " + pos.lng);
+            //window.alert(pos.lat + " " + pos.lng);
             locationUpdate(pos.lat, pos.lng);
             //-------------------------------------
           }, function() {

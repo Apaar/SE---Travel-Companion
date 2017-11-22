@@ -63,24 +63,46 @@
 				xhr.send(params);
 			}
 		}
-		function button_clicked(name){
-			//console.log("button_click "+name.value)
-			setInterval(
-				function(){ 
-					xhr = new XMLHttpRequest();
-               		var url = "get_location_of_friend.php";
-               		var params = "username="+name.value;
-               		xhr.open("POST",url,true);
-               		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-               		xhr.send(params);
-               		xhr.onreadystatechange = function() {
-						if(this.readyState == 4 && this.status == 200) {
-							var response = this.responseText;
-							x=JSON.parse(response)
-							construct_map(x['lat'],x['lng']);
-						}
+		function button_clicked(name) {
+			console.log("button_click "+name.value)
+			var x = new XMLHttpRequest();
+			var url1 = "get_lastseen.php";
+			var params1 = "username="+name.value;
+
+			x.open("POST",url1,true);
+			x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+			x.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) {
+					console.log(x.responseText);
+					var diff = parseInt(x.responseText);
+					if(diff < 3600)
+					{
+						alert("fine");
+						setInterval(
+						function(){ 
+							xhr = new XMLHttpRequest();
+		               		var url = "get_location_of_friend.php";
+		               		var params = "username="+name.value;
+		               		xhr.open("POST",url,true);
+		               		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		               		xhr.send(params);
+		               		xhr.onreadystatechange = function() {
+								if(this.readyState == 4 && this.status == 200) {
+									var response = this.responseText;
+									x=JSON.parse(response)
+									construct_map(x['lat'],x['lng']);
+								}
+							}
+					 	}, 20000);
 					}
-			 	}, 20000);
+					else 
+					{
+						alert("Friend offline");
+					}
+				}
+			}
+			x.send(params1);
 		}
 
 		var map, infoWindow;
@@ -123,7 +145,7 @@
 
 		function construct_map(friend_lat,friend_lng)
 		{
-			alert("hi")
+			//alert("hi")
 			function getLocation() {
 		    if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(showPosition);
@@ -139,10 +161,7 @@
 			    var directionsDisplay = new google.maps.DirectionsRenderer;
 		        var directionsService = new google.maps.DirectionsService;
 			   	directionsDisplay.setMap(map);
-		       // alert(current_lat);
-		        //alert(current_lng);
-		        //alert(friend_lat);
-		        //alert(friend_lng);
+
 		        calculateAndDisplayRoute(directionsService, directionsDisplay,[current_lat,current_lng],[parseFloat(friend_lat),parseFloat(friend_lng)]);
 		     }
 

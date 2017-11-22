@@ -7,3 +7,6 @@
 7) forgot password page - Anjali
 8) adding making and accepting of friend requests - Aniket
 9) figure out how to and make unit tests - Aakanksha
+10) remove all console logs and alerts
+11) clean up friends.php and slow map loads
+12) implement offline in maps
