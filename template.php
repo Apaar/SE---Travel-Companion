@@ -34,7 +34,29 @@
     }
   </script>
   <script>
+  function update_lastseen() {
+    var usr = '<?php echo $usr; ?>';
+    var xhr = new XMLHttpRequest();
+    var url = "update_lastseen.php";
+    var usr = '<?php echo $usr; ?>';
+    var params = "username="+usr;
+    xhr.open("POST",url,true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+          var response = this.responseText;
+          console.log(response);
+        }
+      }
+
   
+    xhr.send(params);
+
+  }
+
+  }
   function sendLocation() {
     // Try HTML5 geolocation.
     var usr = '<?php echo $usr; ?>';
@@ -54,10 +76,12 @@
           }, function() {
             console.log("location failed")
           });
+          
         } 
         else {
           console.log("location failed")
         }
+        update_lastseen();
       }
       setTimeout(sendLocation,1000*2);
   }
