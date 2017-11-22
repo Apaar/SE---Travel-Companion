@@ -56,7 +56,7 @@
 
   }
 
-  }
+  
   function sendLocation() {
     // Try HTML5 geolocation.
     var usr = '<?php echo $usr; ?>';

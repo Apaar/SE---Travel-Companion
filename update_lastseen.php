@@ -9,18 +9,17 @@
 	date_default_timezone_set('Asia/Calcutta'); 
 
 	$date1 = date("Y-m-d H:i:s"); 
-	$query = 'SELECT * FROM last_seen where username="'.$_POST['username'].'";';
+	$query = 'SELECT * FROM last_seen where username="'.$username.'";';
 	$result = $conn->query($query);
 	if($result->num_rows == 0){
-		$query =  "INSERT INTO `last_seen`(`username`, `last_seen`) VALUES (\"".$username."\", \"".$date1."\")";
+		$query =  'INSERT INTO `last_seen`(`username`, `last_seen`) VALUES ("'.$username.'","'.$date1.'")';
 		$result = $conn->query($query);
 	}
 	else
 	{
-		$query =  "UPDATE `last_seen` SET `username`=\'$username\',`last_seen`=\'$date1\'";
+		$query =  'UPDATE `last_seen` SET `username`="'.$username.'",`last_seen`="'.$date1.'"';
 		$result = $conn->query($query);
 	}
-	echo json_encode($query);
-	
+	echo 'true';
 ?>
 
