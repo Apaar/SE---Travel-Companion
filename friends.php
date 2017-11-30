@@ -1,7 +1,54 @@
 <?php
 	include_once('template.php');
 ?>
-	<div class="row">
+
+	<style>
+
+		#frn
+		{
+			background-position: 50% 50%;
+			z-index: 1;
+			background: rgba(0, 0, 0, 0) url(Journey.png) no-repeat scroll 50% 50% / cover padding-box border-box;
+			font: normal normal normal 16px/normal Helvetica, Arial, sans-serif;
+			background-size:cover;
+		}
+
+		.animatable
+		{
+			-webkit-transition:all 1000ms ease-out;
+			transition:all 1000ms ease-out;
+		}
+		
+		.scaled
+		{
+			-webkit-transform:scale(1.10);
+			transform:scale(1.10);
+		}
+
+		.navbar
+		{
+			display: none;   
+		}​
+
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#frn').attr('class', 'animatable');
+			setTimeout(function () {
+				$('#frn').removeClass('animatable');
+			}, 1000)
+		});
+		$(document).ready(function() {
+			$('.row').delay(600).fadeIn(1200);
+		});
+		$(document).ready(function() {
+			$('.navbar').delay(600).fadeIn(1200);
+		});
+	</script>
+
+
+	<div class="row" style="display: none">
 		<div style="float:left;" class ="col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -78,7 +125,6 @@
 					var diff = parseInt(x.responseText);
 					if(diff < 3600)
 					{
-						alert("fine");
 						setInterval(
 						function(){ 
 							xhr = new XMLHttpRequest();
@@ -94,7 +140,7 @@
 									construct_map(x['lat'],x['lng']);
 								}
 							}
-					 	}, 20000);
+					 	}, 10000);
 					}
 					else 
 					{
@@ -193,5 +239,6 @@
 	<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlSfndSEgMWYRJjk92AJShsQX4BEi3Rwk&callback=initMap">
     </script>
+ <body id="frn" class="scaled")">
 </body>
 </html>

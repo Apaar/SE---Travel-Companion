@@ -9,12 +9,43 @@
       $visibility = "block";
   }
 ?>
-<html>
-<head>
-	<title>Homepage</title>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<style>
+		/*.navbar
+		{
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+			filter: alpha(opacity=50);
+			-moz-opacity: 0.50;
+			-khtml-opacity: 0.5;
+			opacity: 0.5;
+			z-index: 1;
+		}*/
+		html {
+			font: normal normal normal 16px/normal Helvetica, Arial, sans-serif;
+		}
+	.navbar-nav>li>a {
+    color: white !important;
+    text-decoration: none !important;
+    font: normal normal normal 16px/normal Helvetica, Arial, sans-serif;
+	}
+	</style>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main1.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/main2.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/main3.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/main4.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/main5.css" />
+	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main1.js"></script>
+	<script src="assets/js/main2.js"></script>
+	<script src="assets/js/main3.js"></script>
+	<script src="assets/js/main4.js"></script>
+	<script src="assets/js/main5.js"></script>
   <script type="text/javascript">
     function check()
     {
@@ -76,7 +107,8 @@
       }
     }
 
-  
+  </script>
+  <script>
   function update_lastseen() {
     var usr = '<?php echo $usr; ?>';
     var xhr = new XMLHttpRequest();
@@ -99,7 +131,7 @@
 
   }
 
-  sendLocation();
+  
   function sendLocation() {
     // Try HTML5 geolocation.
     var usr = '<?php echo $usr; ?>';
@@ -126,7 +158,7 @@
         }
         update_lastseen();
       }
-      setTimeout(sendLocation,1000*5);
+      setTimeout(sendLocation,1000*2);
   }
 
   function locationUpdate(lat, lng)

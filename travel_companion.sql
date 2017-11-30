@@ -64,7 +64,8 @@ INSERT INTO `friends_list` (`friend1`, `friend2`) VALUES
 ('Aniket', 'xyz'),
 ('xyz', 'Aniket'),
 ('Aniket', 'abc'),
-('abc', 'Aniket');
+('abc', 'Aniket'),
+('apaar','Aniket');
 
 -- --------------------------------------------------------
 

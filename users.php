@@ -50,11 +50,13 @@
 						var list_element = document.createElement('button');
 							list_element.setAttribute('type','button');
 							list_element.className = 'list-group-item list-group-item-action';
-							response1.forEach(function(friends1){
-								if(friends['username'] == friends1['friend2']){
-									list_element.className = 'list-group-item list-group-item-action disabled';
-								}
-							})
+							if(response1){
+								response1.forEach(function(friends1){
+									if(friends['username'] == friends1['friend2']){
+										list_element.className = 'list-group-item list-group-item-action disabled';
+									}
+								})
+							}
 							
 							list_element.innerHTML = friends['username'];
 							list_element.value = friends['username'];
